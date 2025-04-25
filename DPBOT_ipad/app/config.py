@@ -14,10 +14,10 @@ WXAPI_PORT = int(os.environ.get("WXAPI_PORT", 8057))
 
 WXAPI_URL = f"http://{WXAPI_HOST}:{WXAPI_PORT}"  #docker
 #WXAPI_URL = f"http://localhost:8057" #本地测试
-SELFWXID = os.environ.get("WXID", "wxid_yby6o1jbfqyd12")
+SELFWXID = os.environ.get("WXID", "wxid_yby6o1jbfqyd12")# 机器人的wxid 换成你自己的啊
 #WXAPI_WS_URL = f"ws://{WXAPI_HOST}:{WXAPI_WS_PORT}/ws"   #docker
 # 用户配置
-DEFAULT_WXID = os.environ.get("WXID", "wxid_yby6o1jbfqyd12")# 机器人的wxid
+DEFAULT_WXID = os.environ.get("WXID", "wxid_yby6o1jbfqyd12")# 机器人的wxid 换成你自己的啊
 
 # 日志配置
 LOG_DIR = os.environ.get("LOG_DIR", "/python-app/logs")
