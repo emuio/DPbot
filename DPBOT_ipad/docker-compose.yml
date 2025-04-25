@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: DPBOT-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: always
+    networks:
+      - wxapi-network
+    command: ["redis-server", "--appendonly", "yes"]
+
+  wxapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: DPBOT-IPAD855
+    ports:
+      - "8057:8057"  # Web服务端口
+      - "8899:8899"  # WebSocket服务端口
+    restart: always
+    depends_on:
+      - redis
+    networks:
+      - wxapi-network
+    environment:
+      - TZ=Asia/Shanghai
+      
+  python-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.python
+    container_name: DPBOT
+    restart: always
+    depends_on:
+      - wxapi
+    networks:
+      - wxapi-network
+    volumes:
+      - ./app:/app
+
+    environment:
+      - TZ=Asia/Shanghai
+      - WXAPI_HOST=wxapi
+      - WXAPI_WS_PORT=8899
+      - WXAPI_PORT=8057
+      - WXID=wxid_i73nrnun919k12
+      - WECHAT_LOG_LEVEL=INFO
+      - ADMIN_USERS=wxid_admin1,wxid_admin2
+      - HOME=/app
+
+networks:
+  wxapi-network:
+    driver: bridge
+
+volumes:
+  redis-data: 
