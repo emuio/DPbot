@@ -9,11 +9,11 @@ ENV = os.environ.get("ENV", "development")
 # WebSocket配置
 WXAPI_HOST = os.environ.get("WXAPI_HOST", "wxapi")
 WXAPI_WS_PORT = int(os.environ.get("WXAPI_WS_PORT", 8899))
-WXAPI_WS_URL = f"ws://192.168.31.41:8899/ws"  #本地测试
+#WXAPI_WS_URL = f"ws://localhost:8899/ws"  #本地测试
 WXAPI_PORT = int(os.environ.get("WXAPI_PORT", 8057))
 
-#WXAPI_URL = f"http://{WXAPI_HOST}:{WXAPI_PORT}"  #docker
-WXAPI_URL = f"http://192.168.31.41:8057" #本地测试
+WXAPI_URL = f"http://{WXAPI_HOST}:{WXAPI_PORT}"  #docker
+#WXAPI_URL = f"http://localhost:8057" #本地测试
 SELFWXID = os.environ.get("WXID", "wxid_yby6o1jbfqyd12")
 #WXAPI_WS_URL = f"ws://{WXAPI_HOST}:{WXAPI_WS_PORT}/ws"   #docker
 # 用户配置

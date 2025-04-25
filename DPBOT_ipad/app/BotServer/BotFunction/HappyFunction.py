@@ -163,10 +163,11 @@ class HappyFunction:
  
             # 帮助菜单
             elif judgeEqualListWord(content, self.helpKeyWords):
-                helpMsg = '[爱心]=== NGCBot菜单 ===[爱心]\n'
+                helpMsg = '[爱心]=== DPBOT菜单 ===[爱心]\n'
                 helpMsg += '【一、积分功能】\n1.1、Ai画图(@机器人 画一张xxxx)\n1.2、Ai对话(@机器人即可)\n1.3、IP溯源(溯源 ip)\n1.4、IP威胁查询(ip查询 ip)\n1.5、CMD5查询(md5查询 xxx)\n1.6、签到(签到)\n1.7、积分查询(积分查询)\n\n'
                 helpMsg += '【二、娱乐功能】\n2.1、美女图片(图片)\n2.2、美女视频(视频)\n2.3、摸鱼日历(摸鱼日历)\n2.4、舔狗日记(舔我)\n2.5、早报(早报)\n2.6、晚报(晚报)\n2.6、表情列表(表情列表)\n2.7、随机表情(随机表情, 有几率报错)\n'
-                helpMsg += '[爱心]=== NGCBot菜单 ===[爱心]\n'
+                helpMsg += '[爱心]=== DPBOT菜单 ===[爱心]\n'
+                helpMsg += 'NGCBOT复活版👉https://github.com/dpyyds/DPbot'
                 self.wcf.send_text(f'@{getIdName(self.wcf, sender, roomId)}\n{helpMsg}', receiver=roomId)
         # elif msgType == 49:
         #     # 视频号解析
