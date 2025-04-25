@@ -1,4 +1,4 @@
 # DPbot
 NGCBOT 的ipad协议适配版本
 
-![示例图片](https://github.com/dpyyds/DPbot/img/erweima.jpg)
+<img src="./img/erweima.jpg" alt="进群交流" width="300" height="200">
