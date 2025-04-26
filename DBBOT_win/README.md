@@ -17,7 +17,8 @@ NGCBOT 的ipad协议适配版本
     "ProxyPassword": "string",
     "ProxyUser": "string"
   }
-}```
+}
+```
 获取登录二维码url和uuid，访问url扫码登录\n
 uuid传入`/Login/CheckQR`接口中，手机顶部出现ipad登录则成功，没成功再调一次`/Login/CheckQR接口`\n
 获取到自己的wxid记录到/app/config.py
