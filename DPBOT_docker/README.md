@@ -24,5 +24,3 @@ uuid传入`/Login/CheckQR`接口中，手机顶部出现ipad登录则成功，�
 # 我是nas部署，感觉很简单
 
 
-# 致敬云山
-hook版NGCBOT地址：https://github.com/ngc660sec/NGCBot
