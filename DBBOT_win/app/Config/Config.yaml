@@ -386,7 +386,7 @@ FunctionConfig:
         - 'MD5查询'
       Cmd5Api: 'http://www.cmd5.com/api.ashx?email={}&key={}&hash={}'
     SignConfig:
-      SignKeyWord: '签到: DPBOT安全实验室承接微信AI机器人定制!'
+      SignKeyWord: 'NGC复活了'
       SignPoint: 10
     SearchPointConfig:
       SearchPointKeyWords:
