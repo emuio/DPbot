@@ -56,7 +56,7 @@ class HappyFunction:
                 self.wcf.send_image(picPath, receiver=roomId)
             # 美女视频
             elif judgeEqualListWord(content, self.videoKeyWords):
-                self.wcf.send_text('开源版无此功能', receiver=roomId)
+                self.wcf.send_text('还未适配，敬请期待', receiver=roomId)
                 return
                 videoPath = self.Ams.getGirlVideo()
                 if not videoPath:
@@ -112,7 +112,7 @@ class HappyFunction:
                     self.wcf.send_text(f'链接地址: \n{videoPath}', receiver=roomId)
             # 点歌
             elif judgeSplitAllEqualWord(content, self.musicWords):
-                self.wcf.send_text('开源版无此功能', receiver=roomId)
+                self.wcf.send_text('还未适配，敬请期待', receiver=roomId)
                 return
                 musicName = content.split(' ')[1::]
                 musicHexData = self.Ams.getMusic(musicName)
