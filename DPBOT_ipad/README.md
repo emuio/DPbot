@@ -5,7 +5,9 @@ NGCBOT 的ipad协议适配版本
 
 # 启动顺序
 
-`cd DPBOT_ipad`\n`docker compose up -d`
+`cd DPBOT_ipad` 
+
+`docker compose up -d`
 
 # 登录
 多数redis和DPBOT-IPAD855启动没问题
