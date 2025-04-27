@@ -1,5 +1,4 @@
 from BotServer.MainServer import MainServer
-from cprint import cprint
 import signal
 import time
 import sys
@@ -26,7 +25,6 @@ def shutdown(signum, frame):
 
 
 if __name__ == '__main__':
-    cprint.info(Bot_Logo.strip())
     Ms = MainServer()
     signal.signal(signal.SIGINT, shutdown)
     signal.signal(signal.SIGTERM, shutdown)
