@@ -68,14 +68,31 @@ class Wcf:
         data = response.get("Data", {})
         return {
             "Uuid": data.get("Uuid", ""),
-            "QrUrl": data.get("QrUrl", "")
+            "QrUrl": data.get("QrUrl", ""),
+            "QrBase64":data.get("QrBase64", "")
         }
     def checkQR(self, uuid: str) -> Dict:
-        response = self._request("/api/Login/CheckQR", {
-            "uuid": uuid
-        })
-    # 提取所需字段
-        data = response.get("Data", {})
+        response = self._request("/api/Login/CheckQR", {"uuid": uuid})
+        logger.debug(f"CheckQR response: {response}")
+        if not isinstance(response, dict):
+            logger.error(f"Invalid response type: {type(response)}, response: {response}")
+            return {
+                "Code": -1,
+                "Message": "Invalid API response",
+                "userName": "",
+                "nickName": "",
+                "alias": ""
+            }
+        if not response.get("Success", False):
+            logger.error(f"API request failed: {response.get('Message', 'Unknown error')}")
+            return {
+                "Code": response.get("Code", -1),
+                "Message": response.get("Message", "API request failed"),
+                "userName": "",
+                "nickName": "",
+                "alias": ""
+            }
+        data = response.get("Data") or {}
         acct_sect_resp = data.get("acctSectResp", {})
         return {
             "Code": response.get("Code", 0),
@@ -120,7 +137,13 @@ class Wcf:
         except Exception as e:
             logger.error(f"发送图片时发生错误: {e}")
             return {"status": "error", "message": str(e)}
-            
+    def accept_new_friend(self, v3: str, v4: str, scene: int) -> Dict:
+        return self._request("/api/Friend/PassVerify", {
+            "v1": v3,
+            "v2": v4,
+            "scene": scene,
+            "Wxid": self.self_wxid
+        })
     def send_text(self, msg: str, receiver: str, at: str = None) -> Dict:
         return self._request("/api/Msg/SendTxt", {
             "At": at or "",

@@ -30,3 +30,4 @@ cd  进入app文件夹，首次运行先`python test.py`,避免初始消息过�
 # NGCBOT 复活成功
 匆忙上线，接口陆续适配，逐渐恢复至NGCBOT原样
 
+

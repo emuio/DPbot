@@ -5,7 +5,7 @@ import requests
 import time
 import os
 import re
-
+from loguru import logger
 def getUserLabel(wcf, sender):
     """
     获取用户所属的标签列表
@@ -51,23 +51,34 @@ def getQuoteImageData(content):
             return None, None, None
     except Exception:
         return 0, None, None
-
 def getQuoteMsgData(content):
     """
     提取引用消息 内容 引用内容 Type
-    :param content:
-    :return:
+    :param content: XML string containing the message
+    :return: tuple (typeValue: int, srvContent: str or None, titleValue: str or None)
     """
     try:
         root = ET.fromstring(content)
         refermsg = root.find('.//refermsg')
         title = root.find('.//title')
         if refermsg is not None:
-            # 提取type和引用Content
+            # 提取 type 和 content
             typeValue = refermsg.find('type').text
-            srvContent = refermsg.find('content').text
-            titleValue = title.text
-            if typeValue and srvContent:
+            srvContent_xml = refermsg.find('content').text
+            titleValue = title.text if title is not None else None
+            
+            if typeValue and srvContent_xml:
+                # 进一步解析 content 内部的 XML 结构
+                try:
+                    srvContent_root = ET.fromstring(srvContent_xml)
+                    inner_title = srvContent_root.find('.//title')
+                    if inner_title is not None:
+                        srvContent = inner_title.text  # 提取内部 <title>"
+                    else:
+                        srvContent = srvContent_xml  # 回退到原始 XML 字符串
+                except Exception:
+                    srvContent = srvContent_xml  # 解析失败时返回原始 XML 字符串
+                
                 return int(typeValue), srvContent, titleValue
             return 0, None, None
     except Exception:

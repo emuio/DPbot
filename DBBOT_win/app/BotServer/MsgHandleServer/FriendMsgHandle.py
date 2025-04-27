@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 import Config.ConfigServer as Cs
 from OutPut.outPut import op
 from threading import Thread
-
+from loguru import logger
 
 class FriendMsgHandle:
     def __init__(self, wcf):
@@ -97,10 +97,11 @@ class FriendMsgHandle:
             # 语音Ai回复
             Thread(target=self.getAudioAiMsg, args=(msg.id, sender)).start()
         # 转发公众号消息到推送群聊 超管有效
-        if msgType == 49 and '我给你发了一个红包，赶紧去拆' in msg.content:
-            Thread(target=self.forwardRedPacketMsg, args=(sender,)).start()        
+      
         if msg.type == 49:
-            return
+            # 红包消息处理 转发红包消息给主人
+            if '我给你发了一个红包，赶紧去拆' in msg.content:
+                Thread(target=self.forwardRedPacketMsg, args=(sender,)).start()  
             # 公众号卡片转发给推送群聊
             if msg.sender in self.Administrators and 'gh_' in msg.content:
                 Thread(target=self.forwardGhMsg, args=(msg.id,)).start()
@@ -110,11 +111,10 @@ class FriendMsgHandle:
             # 暂时没用 等Hook作者更新 老版本微信有用
             elif '转账' in msg.content and self.acceptMoneyLock:
                 Thread(target=self.acceptMoney, args=(msg,)).start()
-            # 引用Ai对话
+            # 引用Ai对话            
             else:
+                #logger.debug(f'content: {content}')
                 Thread(target=self.getQuoteAi, args=(content, sender)).start()
-        # 红包消息处理 转发红包消息给主人
-
         # 好友自动同意处理 暂时没用 老版本微信有用
         if msgType == 37 and self.acceptFriendLock:
             Thread(target=self.acceptFriend, args=(msg,)).start()
@@ -126,7 +126,9 @@ class FriendMsgHandle:
         :return:
         """
         try:
+            #logger.debug(f'content: {content}')
             srvType, srvContent, srvTitle = getQuoteMsgData(content)
+            #logger.debug(f'srvType: {srvType}, srvContent: {srvContent}, srvTitle: {srvTitle}')
             if srvType == 1:
                 content = f'用户描述的内容: {srvContent}\n以上是用户描述的内容, 请根据用户描述的内容和用户提问的内容给我回复！\n用户提问的内容: {srvTitle}'
                 self.getAiMsg(content=content, sender=sender)
@@ -162,13 +164,16 @@ class FriendMsgHandle:
         :return:
         """
         try:
+            logger.debug(f'msg.content: {msg.content}')
             root_xml = ET.fromstring(msg.content.strip())
             wxId = root_xml.attrib["fromusername"]
             op(f'[*]: 接收到新的好友申请, 微信id为: {wxId}')
             v3 = root_xml.attrib["encryptusername"]
             v4 = root_xml.attrib["ticket"]
             scene = int(root_xml.attrib["scene"])
+            logger.debug(f'v3: {v3}, v4: {v4}, scene: {scene}')
             ret = self.wcf.accept_new_friend(v3=v3, v4=v4, scene=scene)
+            logger.debug(f'ret: {ret}')
             acceptSendMsg = self.acceptFriendMsg.replace('\\n', '\n')
             self.wcf.send_text(acceptSendMsg, receiver=wxId)
             if ret:
@@ -292,15 +297,21 @@ class FriendMsgHandle:
             if judgeEqualWord(content, keyWord):
                 roomLists = self.roomKeyWords.get(keyWord)
                 for roomId in roomLists:
-                    roomMember = self.wcf.get_chatroom_members(roomId)
-                    if len(roomMember) == 500:
+                    roominfo = self.wcf.get_info_by_roomid(roomId)
+                    #logger.debug(f'roominfo: {roominfo}')
+                    roomMembers = roominfo.get('members', [])
+                    roomMemberCount = roominfo.get('member_count', 0)
+                    if roomMemberCount == 500:
                         continue
-                    if sender in roomMember.keys():
-                        self.wcf.send_text(f'你小子已经进群了, 还想干吗[旺柴]', receiver=sender)
-                        break
+                    for member in roomMembers:
+                        if member.get('username') == sender:
+                            self.wcf.send_text(f'你小子已经进群了, 还想干吗[旺柴]', receiver=sender)
+                            return  # 退出函数，避免重复邀请
+                        
+                # 邀请 sender 加入群聊
                     if self.wcf.invite_chatroom_members(roomId, sender):
                         op(f'[+]: 已将 {sender} 拉入群聊【{roomId}】')
-                        break
+                        return  # 成功邀请后退出
                     else:
                         op(f'[-]: {sender} 拉入群聊【{roomId}】失败 !!!')
 
@@ -311,7 +322,7 @@ class FriendMsgHandle:
         :return:
         """
         wxId = content.split(' ')[1]
-        sendMsg = f'==== [爱心]来自超管的消息[爱心] ====\n\n{content.split(" ")[-1]}\n\n====== [爱心]NGCBot[爱心] ======'
+        sendMsg = f'==== [爱心]来自超管的消息[爱心] ====\n\n{content.split(" ")[-1]}\n\n====== [爱心]DPBot[爱心] ======'
         self.wcf.send_text(sendMsg, receiver=wxId)
 
     def getAudioAiMsg(self, msgId, sender):
@@ -356,7 +367,7 @@ class FriendMsgHandle:
         :param content:
         :return:
         """
-        forwardMsg = f"= [爱心]收到来自好友的消息[爱心] =\n好友ID: {wxId}\n好友昵称: {getIdName(self.wcf, wxId)}\n好友消息: {content}\n====== [爱心]NGCBot[爱心] ======"
+        forwardMsg = f"= [爱心]收到来自好友的消息[爱心] =\n好友ID: {wxId}\n好友昵称: {getIdName(self.wcf, wxId)}\n好友消息: {content}\n====== [爱心]DPBot[爱心] ======"
         for administrator in self.Administrators:
             self.wcf.send_text(forwardMsg, receiver=administrator)
 

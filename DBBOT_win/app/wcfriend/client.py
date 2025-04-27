@@ -137,7 +137,13 @@ class Wcf:
         except Exception as e:
             logger.error(f"发送图片时发生错误: {e}")
             return {"status": "error", "message": str(e)}
-            
+    def accept_new_friend(self, v3: str, v4: str, scene: int) -> Dict:
+        return self._request("/api/Friend/PassVerify", {
+            "v1": v3,
+            "v2": v4,
+            "scene": scene,
+            "Wxid": self.self_wxid
+        })
     def send_text(self, msg: str, receiver: str, at: str = None) -> Dict:
         return self._request("/api/Msg/SendTxt", {
             "At": at or "",
