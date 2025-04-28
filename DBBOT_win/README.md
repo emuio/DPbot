@@ -8,7 +8,7 @@ NGCBOT 的ipad协议适配版本
 双击 wxapi.exe
 ## 三 登录机器人
 ### 访问`http://localhost:8057`
-调用` /Login/GetQRx` 传参
+调用` /Login/GetQRx` 传参(参数必传，不然凌晨掉线)
 ```{
   "DeviceID": "123456789",
   "DeviceName": "pingguo",
