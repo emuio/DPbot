@@ -60,15 +60,19 @@ class WxMsg:
         # 私聊消息处理
         else:
             return content.split("\n", 1)[-1].strip() if "\n" in content else content    
+
     def _determine_atusers(self) -> List[str]:
-        """确定被@的用户 wxid 列表"""
+        """从消息源中提取@用户的 wxid 列表，兼容 CDATA 和非 CDATA 格式"""
         if not self.from_group() or not self.msg_source:
             return []
-        at_users = re.search(r"<atuserlist>(.*?)</atuserlist>", self.msg_source)
-        if at_users:
-            return at_users.group(1).split(",")
-        return []
-
+    
+    # 优先尝试匹配 CDATA 格式
+        match = re.search(r"<atuserlist><!\[CDATA\[(.*?)\]\]></atuserlist>", self.msg_source)
+        if not match:
+        # 回退匹配非 CDATA 格式
+            match = re.search(r"<atuserlist>(.*?)</atuserlist>", self.msg_source)
+    
+        return [user for user in match.group(1).split(",") if user] if match and match.group(1) else []
     def _determine_sender(self) -> Optional[str]:
         if self.from_self():
             return self.self_wxid
