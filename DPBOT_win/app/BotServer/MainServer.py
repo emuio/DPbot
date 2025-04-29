@@ -10,7 +10,7 @@ from OutPut.outPut import op
 from queue import Empty
 from wcfriend.client import Wcf
 from wcfriend.wxmsg import WxMsg
-from config import *
+#from config import *
 from loguru import logger
 import requests
 from loguru import logger
