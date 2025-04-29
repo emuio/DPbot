@@ -142,7 +142,7 @@ class HappyFunction:
 
             # 随机表情
             elif judgeEqualListWord(content, self.emoRandomKeyWords):
-                self.wcf.send_text('开源版无此功能', receiver=roomId)
+                self.wcf.send_text('还未适配，敬请期待', receiver=roomId)
                 return
                 avatarPathList.append(getUserPicUrl(self.wcf, sender))
                 emoPath, sizeBool = self.Ams.getEmoticon(avatarPathList)

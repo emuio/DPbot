@@ -73,7 +73,7 @@ class PointFunction:
                         receiver=roomId)
                     return
                 self.wcf.send_text(
-                    f'@{getIdName(self.wcf, sender, roomId)} 签到成功, 当前剩余积分: {self.Dms.searchPoint(sender, roomId)}',
+                    f'@{getIdName(self.wcf, sender, roomId)} 签到成功, 当前剩余积分: {self.Dms.searchPoint(sender, roomId)}\n复活版👉https://github.com/dpyyds/DPbot',
                     receiver=roomId)
             # 查询积分
             elif judgeEqualListWord(content, self.searchPointKeyWord):
