@@ -13,7 +13,7 @@ import subprocess
 # 硬编码配置参数
 WXAPI_URL = "http://localhost:8057"  # 本地测试URL
 WXAPI_WS_URL = "ws://localhost:8899/ws"  # WebSocket URL
-DEFAULT_SELFWXID = "wxid_ucndvf3dz8nr12"  # 默认WXID，将在登录成功后更新
+DEFAULT_SELFWXID = "wxid_ucndvf3dz8nr121"  # 默认WXID，将在登录成功后更新
 
 # 配置文件路径
 CONFIG_JSON_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "DPbot_config.json")
