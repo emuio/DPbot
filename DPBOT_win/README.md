@@ -7,7 +7,7 @@ NGCBOT 的ipad协议适配版本
 ## 二 启动wxapi
 双击"一键启动"脚本，一路选y
 
-<img src="../img/login1.jpg" alt="登录界面" >
+<img src="../img/login1.jpg" alt="登录界面">
 ![登录界面](../img/login1.jpg)
 ![登录界面](../img/login.png)
 # NGCBOT 复活成功
