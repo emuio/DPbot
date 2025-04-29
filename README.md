@@ -9,6 +9,9 @@ NGCBOT 的ipad协议适配版本
 vx：ddyhpy88
 备注：dpbot
 
+# 小白直接看这里即可
+
+https://www.kdocs.cn/l/cfIgr9UX0Z6s
 # 致敬云山
 hook版NGCBOT地址：https://github.com/ngc660sec/NGCBot
 
