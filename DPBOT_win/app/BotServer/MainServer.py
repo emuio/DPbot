@@ -19,8 +19,8 @@ import base64
 from io import BytesIO
 from PIL import Image
 class MainServer:
-    def __init__(self):
-        self.wcf = Wcf(self_wxid=SELFWXID, base_url=WXAPI_URL, ws_url=WXAPI_WS_URL, max_retries=10, retry_delay=5)
+    def __init__(self, self_wxid, base_url, ws_url):
+        self.wcf = Wcf(self_wxid=self_wxid, base_url=base_url, ws_url=ws_url, max_retries=10, retry_delay=5)
         self.Dis = DbInitServer()
         # 开启全局接收
         self.wcf.start()
@@ -69,5 +69,5 @@ class MainServer:
 
 
 if __name__ == '__main__':
-    Ms = MainServer()
+    Ms = MainServer(self_wxid=USER_WXID, base_url=WXAPI_URL, ws_url=WXAPI_WS_URL)
     Ms.processMsg()
