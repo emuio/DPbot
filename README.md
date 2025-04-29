@@ -4,7 +4,10 @@ NGCBOT 的ipad协议适配版本
 # 顺手点个star，支持一下
 
 # 项目适配接口随时在更新，进群关注最新进展
-![进群交流](./img/erweima.jpg)
+![进群交流](https://raw.githubusercontent.com/用户名/DPbot/main/img/erweima.jpg)
+如果上面图片无法显示，请使用以下链接：
+![进群交流2](/img/erweima.jpg)
+![进群交流3](img/erweima.jpg)
 
 # 致敬云山
 hook版NGCBOT地址：https://github.com/ngc660sec/NGCBot
