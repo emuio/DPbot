@@ -4,7 +4,7 @@ NGCBOT 的ipad协议适配版本
 # 顺手点个star，支持一下
 
 # 项目适配接口随时在更新，进群关注最新进展
-![进群交流](img/erweima_new.jpg)
+![进群交流](img/erweima.jpg)
 
 vx：ddyhpy88
 备注：dpbot
