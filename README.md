@@ -31,3 +31,6 @@ hook版NGCBOT地址：https://github.com/ngc660sec/NGCBot
 | 私聊引用图片ai回复                                | ✅     |     |
 | 早晚报/积分/api/摸鱼/塔罗/kfc/美女/视频解析/猜成语/成语接龙/群聊总结/发言榜/潜水榜/管理员功能/关键词回复 | ✅     | ✅    |
 | meme表情                                          | ✅     |       |
+
+# Pro版本预告
+![DPbotProGui v1.0.1](img/gui.png)

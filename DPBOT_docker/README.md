@@ -13,7 +13,7 @@ NGCBOT 的ipad协议适配版本
 多数redis和DPBOT-IPAD855启动没问题
 
 ## 访问`http://localhost:8057`
-调用` /Login/GetQRx` 传参(参数必传，不然凌晨掉线)
+调用` /Login/GetQRCar` 传参(参数必传，不然凌晨掉线)
 ```{
   "DeviceID": "123456789",
   "DeviceName": "pingguo",

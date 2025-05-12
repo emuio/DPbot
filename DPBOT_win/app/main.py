@@ -96,15 +96,25 @@ class WxApiService:
     def check_service_available(self, max_retries=5, retry_delay=3):
         cprint.info(f"正在检查wxapi服务是否可用 ({self.url})...")
         
+        # 添加健康检查端点（如果有的话）
+        health_endpoint = f"{self.url}/api/status"  # 假设有这样的端点
+        
         for attempt in range(max_retries):
             try:
-                # 尝试访问一个简单的API接口
-                response = requests.get(f"{self.url}/api/health", timeout=self.timeout)
+                # 尝试使用更短的超时时间先测试连接
+                response = requests.get(self.url, timeout=min(5, self.timeout))
+                
+                # 检查状态码和可能的响应内容
                 if response.status_code == 200:
+                    # 可以增加对响应内容的验证
+                    # 例如: if "status" in response.json() and response.json()["status"] == "ok":
                     cprint.ok("wxapi服务连接成功!")
                     return True
-            except requests.RequestException as e:
-                cprint.warn(f"尝试连接wxapi服务失败 (尝试 {attempt+1}/{max_retries}): {e}")
+                else:
+                    cprint.warn(f"API服务返回异常状态码: {response.status_code}")
+            except Exception as e:  # 捕获所有可能的异常
+                error_type = type(e).__name__
+                cprint.warn(f"尝试连接wxapi服务失败 (尝试 {attempt+1}/{max_retries}): {error_type}: {e}")
                 
                 if attempt < max_retries - 1:
                     cprint.info(f"将在 {retry_delay} 秒后重试...")
@@ -114,16 +124,17 @@ class WxApiService:
         cprint.info("您可以:")
         cprint.info("1. 检查wxapi服务是否正常运行")
         cprint.info("2. 检查网络连接")
-        cprint.info("3. 重新启动程序")
+        cprint.info("3. 验证配置中的URL是否正确")
+        cprint.info("4. 重新启动程序")
         
         return False
      
-    """调用 /Login/GetQRx 提交参数并显示二维码，并轮询等待登录"""    
+    """调用 /Login/GetQRCar 提交参数并显示二维码，并轮询等待登录"""    
     def post_login_qr(self):
         """获取新的二维码"""
         def get_qr_code():
             try:
-                url = f"{self.url}/api/Login/GetQRx"
+                url = f"{self.url}/api/Login/GetQRCar"
                 payload = {
                     "DeviceID": "123456",
                     "DeviceName": "Dpbot",
