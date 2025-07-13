@@ -3,4 +3,4 @@ checkinword = [
     '签到'
 ]
 dpApi = 'https://api.dudunas.top/api/yulu'
-dpKey = 'a78eff8703b1061b1c4a7220c1082d33'
+dpKey = ''
