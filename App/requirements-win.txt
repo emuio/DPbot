@@ -17,6 +17,8 @@ pydub>=0.25.1      # 需要手动安装ffmpeg并添加到PATH
 tomlkit>=0.11.0
 aiofiles>=0.8.0
 pandas>=2.2.3
+openpyxl==3.1.5
+pywin32==310
 # 类型提示支持
 typing-extensions>=4.0.0
 cprint>=1.2.2
