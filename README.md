@@ -121,7 +121,7 @@ DPbot是一个基于Python的机器人框架，支持插件化开发，提供了
    - 记录缘分码，后面用于插件兑换永久授权
 ### 启动机器人：
    - 进入`App`文件夹
-   - 安装依赖，`pip install -r requirements-win.txt`
+   - 安装依赖，`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`然后`pip install -r requirements-win.txt`
    - 其中处理语音需要依赖`ffmpeg`，自行百度安装
    - 启动机器人程序，CMD命令行下或者其他IDE程序中输入：`python main.py`
    - 首次登录，输入2
