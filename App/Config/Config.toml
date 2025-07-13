@@ -1,0 +1,16 @@
+[DPBotConfig]
+Administrators = [
+    'wxid_admin'
+]
+# 是否跳过启动前的历史消息
+skip_history_messages = true
+
+[LogConfig]
+# 是否启用调试模式
+debug = true
+# 日志保存天数
+retention_days = 10
+# 单个日志文件最大大小（MB）
+max_file_size = 500
+# 日志文件编码
+encoding = "utf-8"

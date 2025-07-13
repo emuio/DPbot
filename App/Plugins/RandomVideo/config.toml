@@ -1,0 +1,10 @@
+
+VideoWords = [
+    '美女视频',
+    '视频'
+]
+
+GirlVideoApi = [
+    'http://api.yujn.cn/api/hanfu.php?type=json',
+    'http://api.yujn.cn/api/rewu.php?type=json'
+]

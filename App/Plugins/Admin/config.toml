@@ -1,0 +1,46 @@
+
+
+[AdminConfig]
+addAdminSymbol = [
+    '添加管理员',
+    '新增管理员',
+    '添加管理',
+    '新增管理'
+]
+
+delAdminSymbol = [
+    '删除管理员',
+    '删除管理',
+]
+setGroupAdminModeSymbol = [
+    '管理模式'
+]
+setGroupCustomModeSymbol = [
+    '这群可以'
+]
+delGroupmModeSymbol = [
+    '溜了溜了'
+]
+
+[AdminPlugin]
+enablePlugin = [
+    '启动'
+]
+unablePlugin = [
+    '关'
+]
+addPlugin = [
+    '增'
+]
+delPlugin = [
+    '删'
+]
+menuPlugin = [
+    '插件清单'
+]
+restartPlugin = [
+    '重启'
+]
+initPlugin = [
+    '插件初始化'
+]

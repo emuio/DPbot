@@ -1,0 +1,12 @@
+# 插件启用状态
+enabled = true
+
+dpApi = 'https://api.dudunas.top/api/qushuiyin'
+dpKey = ''
+
+dyWord = [
+    'douyin.com',
+    'xhslink.com',
+    'kuaishou.com',
+    'pipix.com'
+]

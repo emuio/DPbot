@@ -1,0 +1,20 @@
+# 插件启用状态
+enabled = true
+GirlPicApi = 'https://api.52vmy.cn/api/img/tu/girl'
+SeeLeg = 'https://api.lolimi.cn/API/meizi/api.php'
+GirlBig = 'https://api.btstu.cn/sjbz/api.php?lx=dongman&format=images&method=mobile&lx=meizi'
+
+PicWords = [
+    '美女图片',
+    '色色',
+    '图片'
+]
+
+LegWords = [
+    '看腿',
+    '女腿'
+]
+GirlBigWords = [
+    '女大',
+    '666'
+]

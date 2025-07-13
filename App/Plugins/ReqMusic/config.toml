@@ -1,0 +1,7 @@
+dpApi = 'https://api.dudunas.top/api/searchsong?type=netease&num=1'
+dpKey = ''
+
+
+musicword = [
+    '点歌'
+]
