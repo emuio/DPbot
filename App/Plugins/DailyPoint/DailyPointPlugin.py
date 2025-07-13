@@ -28,10 +28,10 @@ class DailyPointPlugin(PluginBase):
         if self.tools.judgeEqualWord(msg.content, '签到'):
             # 获取用户信息
             user_info = await self.dp.getIdName(msg.sender)
-            reply = f"@{user_info} \n签到失败❌️\n回复：点亮DP，集结部落"
+            reply = f"@{user_info} \n签到失败❌️\n回复：DP族人，前来部落"
             await self.dp.sendText(reply, msg.roomid, msg.self_wxid)
             return True
-        elif self.tools.judgeEqualWord(msg.content, '点亮DP，集结部落'):
+        elif self.tools.judgeEqualWord(msg.content, 'DP族人，前来部落'):
             # 获取用户信息
             user_info = await self.dp.getIdName(msg.sender)
             wenan = await self.getDPWenan('毒鸡汤')
