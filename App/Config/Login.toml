@@ -1,7 +1,7 @@
 [DPBotConfig]
-DPBotApi = '127.0.0.1'
+DPBotApi = '192.168.31.53'
 DPBotPort = '8059'
-selfWxid = ""
+selfWxid = "penng729831790"
 nickName = ""
 alias = ""
 bindMobile = ""

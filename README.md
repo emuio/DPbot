@@ -161,7 +161,7 @@ DPbot是一个基于Python的机器人框架，支持插件化开发，提供了
    - 确认Login.toml配置正确
    - 查看日志文件排查具体错误
 4. 缺失依赖
-   - 例如`No module named 'pysilk'`，可尝试`pip install pysilk==0.0.1`,如继续报错，可尝试将本项目下`Help/pysilk`文件夹复制到你的python目录下的`Lib/site-packages`下，然后尝试运行项目
+   - 例如`No module named 'pysilk'`，可尝试`pip install pysilk-mod==1.6.4`,如继续报错，可尝试将本项目下`Help/pysilk`文件夹复制到你的python目录下的`Lib/`下，然后尝试运行项目
 ## 安全建议
 
 1. 定期更新依赖包

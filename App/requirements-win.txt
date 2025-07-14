@@ -10,7 +10,7 @@ numpy>=1.21.0      # 作为OpenCV依赖会自动安装
 qrcode>=7.3.0
 
 # 音频处理
-#pysilk==0.0.1
+pysilk-mod==1.6.4
 pydub>=0.25.1      # 需要手动安装ffmpeg并添加到PATH
 
 # 配置文件和文件操作
