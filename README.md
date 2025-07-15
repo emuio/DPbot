@@ -6,7 +6,7 @@ DPbot是一个基于Python的机器人框架，支持插件化开发，提供了
 
 欢迎加入我们的互助交流群，和更多开发者一起交流、答疑解惑、分享经验！
 
-![DPbot 互助群二维码](Help/dpbot.png)
+![DPbot 互助群二维码](Help/img/dpbot.png)
 
 
 ## 功能特点
