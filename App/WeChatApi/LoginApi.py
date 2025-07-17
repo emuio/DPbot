@@ -12,7 +12,7 @@ class LoginApi:
         try:
             payload = {
                 "DeviceID": "123456",
-                "DeviceName": "Dpbot",
+                "DeviceName": "iPhone18plus",
                 "Proxy": {
                     "ProxyIp": "",
                     "ProxyPassword": "",
