@@ -1,1 +1,118 @@
 linux/
+
+# 同步脚本 - 不提交到仓库
+sync_to_server.sh
+
+# Claude Code 文档 - 不提交到仓库
+CLAUDE.md
+
+# Python 相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+venv/
+env/
+.venv/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 日志文件
+*.log
+App/Config/logs/
+
+# 配置文件 (包含敏感信息)
+App/Config/Config.toml
+App/Config/Login.toml
+App/Config/plugininit.xlsx
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# Redis 数据
+Redis/dump.rdb
+Redis/server_log.txt
+
+# 微信 API 相关
+Wxapi/*.dat
+Wxapi/conf/app.conf
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# 媒体文件缓存
+*.mp3
+*.mp4
+*.wav
+*.avi
+*.mov
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.webp
+
+# 第三方依赖
+node_modules/
+.npm/
+.yarn/
+
+# 测试覆盖率
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 环境变量
+.env
+.env.local
+.env.*.local
