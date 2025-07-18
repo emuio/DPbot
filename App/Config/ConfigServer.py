@@ -13,7 +13,7 @@ def returnConfigPath():
         configPath = '/'.join(current_list_path) + '/Config/'
         return configPath
     else:
-        return current_path
+        return current_path + '/'
 
 
 def returnConfigData():

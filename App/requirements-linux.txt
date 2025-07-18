@@ -17,9 +17,12 @@ pydub>=0.25.1      # 需要：ffmpeg
 # 配置文件和文件操作
 tomlkit>=0.11.0
 aiofiles>=0.8.0
+pandas>=2.2.3
+openpyxl==3.1.5
 
 # 类型提示支持
 typing-extensions>=4.0.0
+cprint>=1.2.2
 
 # 数据库支持
 aiosqlite>=0.17.0
